@@ -154,8 +154,6 @@
 </div>
 
 
-
-
 <script>
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -240,7 +238,6 @@ function updateCountry() {
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
 }
 
-//var create_done_button = false;
 var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
@@ -297,10 +294,6 @@ if (!('webkitSpeechRecognition' in window)) {
       range.selectNode(document.getElementById('final_span'));
       window.getSelection().addRange(range);
     }
-    // if (create_email) {
-    //   create_email = false;
-    //   createEmail();
-    // }
   };
 
   recognition.onresult = function(event) {
@@ -329,15 +322,10 @@ if (!('webkitSpeechRecognition' in window)) {
           recognizing = false;
           recognition.stop();
         }
-        recognizing = false;
         if (ignore_onend) {
           return;
         }
         start_img.src = 'mic.gif';
-      //  if (!final_transcript) {
-      //    showInfo('info_start');
-    //      return;
-  //      }
         showInfo('');
         if (window.getSelection) {
           window.getSelection().removeAllRanges();
@@ -345,24 +333,17 @@ if (!('webkitSpeechRecognition' in window)) {
           range.selectNode(document.getElementById('final_span'));
           window.getSelection().addRange(range);
         }
-
-        //alert("Hello, I detected that");
-	       $("#audio-1")[0].play();
+	      $("#audio-1")[0].play();
     }
     else if (msg.toUpperCase().includes('WIR HOLEN DIE MEISTERSCHAFT')) {
         if (recognizing) {
           recognizing = false;
           recognition.stop();
         }
-        recognizing = false;
         if (ignore_onend) {
           return;
         }
         start_img.src = 'mic.gif';
-  //      if (!final_transcript) {
-  //        showInfo('info_start');
-  //        return;
-  //      }
         showInfo('');
         if (window.getSelection) {
           window.getSelection().removeAllRanges();
@@ -370,13 +351,10 @@ if (!('webkitSpeechRecognition' in window)) {
           range.selectNode(document.getElementById('final_span'));
           window.getSelection().addRange(range);
         }
-
-        //alert("Hello, I detected that");
          $("#audio-2")[0].play();
       }
-      //done_button.style.display = 'none';
-      //done_info.style.display = 'inline-block';
-      showInfo('');
+
+    showInfo('');
   };
 }
 
@@ -395,53 +373,6 @@ var first_char = /\S/;
 function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
-
-// function createEmail() {
-//   var n = final_transcript.indexOf('\n');
-//   if (n < 0 || n >= 80) {
-//     n = 40 + final_transcript.substring(40).indexOf(' ');
-//   }
-//   var subject = encodeURI(final_transcript.substring(0, n));
-//   var body = encodeURI(final_transcript.substring(n + 1));
-//   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-// }
-
-// function doneButton() {
-//   // if (recognizing) {
-//   //   recognizing = false;
-//   //   recognition.stop();
-//   // }
-//   var msg = '';
-//   if(final_transcript) {
-//     msg = final_transcript;
-//   }
-//   else {
-//     msg = interim_transcript;
-//   }
-//   if (msg.includes('Bayern')) {
-//     if (recognizing) {
-//       recognizing = false;
-//       recognition.stop();
-//     }
-//     alert("Hello, I detected that");
-//   }
-//   //done_button.style.display = 'none';
-//   //done_info.style.display = 'inline-block';
-//   showInfo('');
-// }
-
-// function emailButton() {
-//   if (recognizing) {
-//     create_email = true;
-//     recognizing = false;
-//     recognition.stop();
-//   } else {
-//     createEmail();
-//   }
-//   email_button.style.display = 'none';
-//   email_info.style.display = 'inline-block';
-//   showInfo('');
-// }
 
 function startButton(event) {
   if (recognizing) {
@@ -479,9 +410,5 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-//  done_button.style.display = style;
-//  email_button.style.display = style;
-//  done_info.style.display = 'none';
-//  email_info.style.display = 'none';
 }
 </script>
