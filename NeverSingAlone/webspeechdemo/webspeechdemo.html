@@ -140,7 +140,7 @@
 	</audio>
 
 	<div class="rabbit-lyrics" data-media="#audio-1" data-view-mode="mini"> 
-	<!--div id="lyrics-1"-->
+	<!--div class="rabbit-lyrics" id="lyrics-1"  data-media="#audio-1"-->
 	[00:00.00] Oh, wie ist das schön
 	[00:03.00] Oh, wie ist das schön
 	[00:06.00] Sowas hat man lange nicht gesehen,
@@ -355,12 +355,14 @@ function doneButton() {
     msg = interim_transcript;
   }
   if (msg === 'Bayern') {
-    x = new RabbitLyrics({
-    element: $('#lyrics-1'),
-    mediaElement: $('audio-1')
-    });
-
+//    x = new RabbitLyrics({
+//    element: $('#lyrics-1')[0],
+//    mediaElement: $('audio-1')[0]
+//    });
 //    alert("Hello, I detected that");
+        $("#audio-1")[0].play();
+
+
   }
   done_button.style.display = 'none';
   done_info.style.display = 'inline-block';
