@@ -79,6 +79,13 @@
     background-color:transparent;
     padding: 0;
   }
+
+  .line {
+     font-size: 20px; 
+     font-weight: bold;
+     min-height: 100px;
+
+}
 </style>
 
 <link href="rabbit-lyrics-1.0.0/dist/rabbit-lyrics.css" rel="stylesheet" type="text/css"/>
@@ -90,6 +97,13 @@
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
     Web Speech API</a> Demonstration</h1>
+
+<div id="debug-switch">
+<a id="checkbox-label">Debug mode</a>
+<input id="checkbox" type="checkbox" checked=True onclick="switch_debug_mode()">
+</div>
+
+
 <div id="info">
   <p id="info_start">Click on the microphone icon and begin speaking.</p>
   <p id="info_speak_now">Speak now.</p>
@@ -427,5 +441,12 @@ function showButtons(style) {
 //  email_button.style.display = style;
 //  done_info.style.display = 'none';
 //  email_info.style.display = 'none';
+}
+
+function switch_debug_mode()
+{
+  $("#audio-1")[0].hidden=!($("#checkbox")[0].checked);
+  $("#results")[0].hidden=!($("#checkbox")[0].checked);
+  $("#div_language")[0].hidden=!($("#checkbox")[0].checked);
 }
 </script>
