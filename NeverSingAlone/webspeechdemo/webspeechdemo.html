@@ -283,13 +283,19 @@ if (!('webkitSpeechRecognition' in window)) {
       //   recognizing = false;
       //   recognition.stop();
       // }
-      var msg = final_transcript;
+        var msg = '';
+        if(final_transcript) {
+          msg = final_transcript;
+        }
+        else {
+          msg = interim_transcript;
+        }
       if (msg.includes('Bayern')) {
+        alert("Hello, I detected that");
         if (recognizing) {
           recognizing = false;
           recognition.stop();
         }
-        alert("Hello, I detected that");
       }
       //done_button.style.display = 'none';
       //done_info.style.display = 'inline-block';
