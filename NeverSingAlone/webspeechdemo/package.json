@@ -1,0 +1,23 @@
+{
+  "name": "webspeechdemo",
+  "version": "1.0.0",
+  "description": "takes in songs/chants sung by Bayern Munich fans, and returns lyrics + audio",
+  "main": "webspeechdemo.html",
+  "dependencies": {
+    "google-translate-api": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuenaj27/fcbayern.git"
+  },
+  "author": "You'll Never Sing Alone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuenaj27/fcbayern/issues"
+  },
+  "homepage": "https://github.com/zuenaj27/fcbayern#readme"
+}
