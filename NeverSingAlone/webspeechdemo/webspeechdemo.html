@@ -93,11 +93,20 @@
     display: block !important;
 }
 
+#waveform {
+    width: auto;
+}
+
 </style>
 
 <link href="rabbit-lyrics-1.0.0/dist/rabbit-lyrics.css" rel="stylesheet" type="text/css"/>
 <script src="rabbit-lyrics-1.0.0/dist/rabbit-lyrics.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- main wavesurfer.js lib -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+
+<!-- wavesurfer.js microphone -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.microphone.min.js"></script>
 
 
 
@@ -130,7 +139,7 @@
      version 25 or later.</p>
 </div>
 <div class="right">
-  <button id="start_button" onclick="startButton(event)">
+  <button id="start_button" onclick="startButton(event); microphone.start();">
     <img id="start_img" src="mic.gif" alt="Start"></button>
 </div>
 <div id="results">
@@ -145,6 +154,10 @@
     <select id="select_dialect"></select>
   </div>
 </div>
+
+<!-- Waveform display-->
+<div id="waveform" width=""></div>
+
 
 <!-- Lyric display -->
 <div class="center">
@@ -454,4 +467,20 @@ function switch_debug_mode()
   $("#results")[0].hidden=!($("#checkbox")[0].checked);
   $("#div_language")[0].hidden=!($("#checkbox")[0].checked);
 }
+
+
+var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red', cursorColor: 'white', hideScrollbar: true});
+
+var microphone = Object.create(WaveSurfer.Microphone);
+
+microphone.init({
+    wavesurfer: wavesurfer
+});
+
+microphone.on('deviceReady', function(stream) {
+    console.log('Device ready!', stream);
+});
+microphone.on('deviceError', function(code) {
+    console.warn('Device error: ' + code);
+});
 </script>
