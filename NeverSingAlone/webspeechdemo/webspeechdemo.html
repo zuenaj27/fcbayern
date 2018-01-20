@@ -80,6 +80,13 @@
     padding: 0;
   }
 </style>
+
+<link href="rabbit-lyrics-1.0.0/dist/rabbit-lyrics.css" rel="stylesheet" type="text/css"/>
+<script src="rabbit-lyrics-1.0.0/dist/rabbit-lyrics.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
     Web Speech API</a> Demonstration</h1>
@@ -125,6 +132,25 @@
     <select id="select_dialect"></select>
   </div>
 </div>
+
+<!-- Lyric display -->
+<div class="center">
+	<audio id="audio-1" controls>
+	<source src="Oh_wie_ist_das_schoen.mp3" type="audio/mpeg">
+	</audio>
+
+	<div class="rabbit-lyrics" data-media="#audio-1" data-view-mode="mini"> 
+	<!--div id="lyrics-1"-->
+	[00:00.00] Oh, wie ist das schön
+	[00:03.00] Oh, wie ist das schön
+	[00:06.00] Sowas hat man lange nicht gesehen,
+	[00:09.00] So schön, SO SCHÖN!
+	</div>
+</div>
+
+
+
+
 <script>
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -323,7 +349,12 @@ function doneButton() {
   }
   var msg = final_transcript;
   if (msg === 'Bayern') {
-    alert("Hello, I detected that");
+    x = new RabbitLyrics({
+    element: $('#lyrics-1'),
+    mediaElement: $('audio-1')
+    });
+
+//    alert("Hello, I detected that");
   }
   done_button.style.display = 'none';
   done_info.style.display = 'inline-block';
