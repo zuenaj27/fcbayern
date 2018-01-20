@@ -116,7 +116,7 @@
 
 <div id="debug-switch">
 <a id="checkbox-label">Debug mode</a>
-<input id="checkbox" type="checkbox" checked=True onclick="switch_debug_mode()">
+<input id="checkbox" type="checkbox" onclick="switch_debug_mode()">
 </div>
 
 
@@ -182,21 +182,18 @@
 </div>
 <div class="center">
 	<audio id="audio-2" controls>
-	<source src="wir_holen_die_meisterschaft.mp3" type="audio/mpeg">
+	<source src="wir_holen_die_meisterschaft_crop.mp3" type="audio/mpeg">
 	</audio>
 
 	<div class="rabbit-lyrics" data-media="#audio-2" data-view-mode="mini">
 	<!--div class="rabbit-lyrics" id="lyrics-1"  data-media="#audio-1"-->
-	[00:00.00] Wir holen die Meisterschaft,
-	We'll win the championship
-
-	[00:03.00] und den Europacup
+	[00:00.00] und den Europacup
 	and the Europacup
 
-	[00:06.00] und den Pokal
+	[00:03.00] und den Pokal
 	and the DFB cup
 
-	[00:09.00] den holen wir nocheinmal!
+	[00:06.00] den holen wir nocheinmal!
 	we'll win that again!
 	</div>
 </div>
@@ -468,6 +465,7 @@ function switch_debug_mode()
   $("#div_language")[0].hidden=!($("#checkbox")[0].checked);
 }
 
+switch_debug_mode();
 
 var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red', cursorColor: 'white', hideScrollbar: true});
 
