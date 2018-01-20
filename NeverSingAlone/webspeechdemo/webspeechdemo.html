@@ -139,6 +139,19 @@
 	[00:09.00] So schön, SO SCHÖN!
 	</div>
 </div>
+<div class="center">
+	<audio id="audio-2" controls>
+	<source src="wir_holen_die_meisterschaft.mp3" type="audio/mpeg">
+	</audio>
+
+	<div class="rabbit-lyrics" data-media="#audio-2" data-view-mode="mini">
+	<!--div class="rabbit-lyrics" id="lyrics-1"  data-media="#audio-1"-->
+	[00:00.00] Wir holen die Meisterschaft,
+	[00:03.00] und den Europacup
+	[00:06.00] und den Pokal
+	[00:09.00] den holen wir nocheinmal!
+	</div>
+</div>
 
 
 
@@ -302,29 +315,64 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-  //  if (final_transcript || interim_transcript) {
-  //    showButtons('inline-block');
-  //  }
-      // if (recognizing) {
-      //   recognizing = false;
-      //   recognition.stop();
-      // }
-        var msg = '';
-        if(final_transcript) {
-          msg = final_transcript;
-        }
-        // else {
-        //   msg = interim_transcript;
-        // }
-      if (msg.includes('wie ist das schön')) {
-    //    alert("Hello, I detected that");
+
+    var msg = '';
+    if(final_transcript) {
+      msg = final_transcript;
+    }
+    else {
+      msg = interim_transcript;
+    }
+
+    if (msg.toUpperCase().includes('WIE IST DAS SCHÖN')) {
         if (recognizing) {
           recognizing = false;
           recognition.stop();
         }
+        recognizing = false;
+        if (ignore_onend) {
+          return;
+        }
+        start_img.src = 'mic.gif';
+      //  if (!final_transcript) {
+      //    showInfo('info_start');
+    //      return;
+  //      }
+        showInfo('');
+        if (window.getSelection) {
+          window.getSelection().removeAllRanges();
+          var range = document.createRange();
+          range.selectNode(document.getElementById('final_span'));
+          window.getSelection().addRange(range);
+        }
 
         //alert("Hello, I detected that");
 	       $("#audio-1")[0].play();
+    }
+    else if (msg.toUpperCase().includes('WIR HOLEN DIE MEISTERSCHAFT')) {
+        if (recognizing) {
+          recognizing = false;
+          recognition.stop();
+        }
+        recognizing = false;
+        if (ignore_onend) {
+          return;
+        }
+        start_img.src = 'mic.gif';
+  //      if (!final_transcript) {
+  //        showInfo('info_start');
+  //        return;
+  //      }
+        showInfo('');
+        if (window.getSelection) {
+          window.getSelection().removeAllRanges();
+          var range = document.createRange();
+          range.selectNode(document.getElementById('final_span'));
+          window.getSelection().addRange(range);
+        }
+
+        //alert("Hello, I detected that");
+         $("#audio-2")[0].play();
       }
       //done_button.style.display = 'none';
       //done_info.style.display = 'inline-block';
