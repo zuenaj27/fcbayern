@@ -122,7 +122,7 @@
     <button id="done_button" class="button" onclick="doneButton()">
       Done Recording</button>
     <div id="done_info" class="info">
-      Submit Recording<br>
+      Submitted Recording<br>
     </div>
   </div>
   <p>
@@ -347,7 +347,13 @@ function doneButton() {
     recognizing = false;
     recognition.stop();
   }
-  var msg = final_transcript;
+  var msg = '';
+  if(final_transcript) {
+    msg = final_transcript;
+  }
+  else {
+    msg = interim_transcript;
+  }
   if (msg === 'Bayern') {
     x = new RabbitLyrics({
     element: $('#lyrics-1'),
