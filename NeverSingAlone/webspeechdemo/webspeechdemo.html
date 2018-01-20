@@ -111,14 +111,6 @@
   <p>
 </div>
 <div class="center">
-  <div class="sidebyside" style="text-align:right">
-    <button id="done_button" class="button" onclick="doneButton()">
-      Done Recording</button>
-    <div id="done_info" class="info">
-      Submitted Recording<br>
-    </div>
-  </div>
-  <p>
   <div id="div_language">
     <select id="select_language" onchange="updateCountry()"></select>
     &nbsp;&nbsp;
@@ -284,9 +276,24 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-    if (final_transcript || interim_transcript) {
-      showButtons('inline-block');
-    }
+  //  if (final_transcript || interim_transcript) {
+  //    showButtons('inline-block');
+  //  }
+      // if (recognizing) {
+      //   recognizing = false;
+      //   recognition.stop();
+      // }
+      var msg = final_transcript;
+      if (msg.includes('Bayern')) {
+        if (recognizing) {
+          recognizing = false;
+          recognition.stop();
+        }
+        alert("Hello, I detected that");
+      }
+      //done_button.style.display = 'none';
+      //done_info.style.display = 'inline-block';
+      showInfo('');
   };
 }
 
@@ -316,25 +323,29 @@ function capitalize(s) {
 //   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 // }
 
-function doneButton() {
-  if (recognizing) {
-    recognizing = false;
-    recognition.stop();
-  }
-  var msg = '';
-  if(final_transcript) {
-    msg = final_transcript;
-  }
-  else {
-    msg = interim_transcript;
-  }
-  if (msg === 'Bayern') {
-    alert("Hello, I detected that");
-  }
-  done_button.style.display = 'none';
-  done_info.style.display = 'inline-block';
-  showInfo('');
-}
+// function doneButton() {
+//   // if (recognizing) {
+//   //   recognizing = false;
+//   //   recognition.stop();
+//   // }
+//   var msg = '';
+//   if(final_transcript) {
+//     msg = final_transcript;
+//   }
+//   else {
+//     msg = interim_transcript;
+//   }
+//   if (msg.includes('Bayern')) {
+//     if (recognizing) {
+//       recognizing = false;
+//       recognition.stop();
+//     }
+//     alert("Hello, I detected that");
+//   }
+//   //done_button.style.display = 'none';
+//   //done_info.style.display = 'inline-block';
+//   showInfo('');
+// }
 
 // function emailButton() {
 //   if (recognizing) {
@@ -385,9 +396,9 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-  done_button.style.display = style;
+//  done_button.style.display = style;
 //  email_button.style.display = style;
-  done_info.style.display = 'none';
+//  done_info.style.display = 'none';
 //  email_info.style.display = 'none';
 }
 </script>
