@@ -111,8 +111,7 @@
 
 
 <h1 class="center" id="headline">
-  <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-    Web Speech API</a> Demonstration</h1>
+    FC Bayern Lyrics Display</h1>
 
 <div id="debug-switch">
 <a id="checkbox-label">Debug mode</a>
@@ -199,11 +198,11 @@
 
 	[00:03.00] und den Pokal
 	and the DFB-Pokal
-  	y la Copa de Alemania
+  	y la Copa de Alemania,
 
 	[00:06.00] den holen wir nocheinmal!
 	we'll win that again!
-  	¡lo ganaremos de nuevo!
+  	¡ vamos a ganarlo de nuevo!
 	</div>
 </div>
 
@@ -410,6 +409,15 @@ if (!('webkitSpeechRecognition' in window)) {
 
     showInfo('');
   };
+}
+
+document.onkeypress = function(e){
+  if((e || window.event).keyCode === 32){
+    $("#audio-1")[0].play();
+  }
+  else if((e || window.event).keyCode === 13){
+    $("#audio-2")[0].play();
+  }
 }
 
 function upgrade() {
