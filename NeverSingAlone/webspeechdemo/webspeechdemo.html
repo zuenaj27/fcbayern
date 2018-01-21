@@ -63,7 +63,7 @@
   #info {
     font-size: 20px;
     text-align: center;
-    color: #777;
+    color: white;
     visibility: hidden;
   }
   #results {
@@ -117,7 +117,8 @@ body {
 
 
 
-<h1 class="center" style="color: white" id="headline">FCBHackdays - YouWillNeverSingAlone</h1>
+<h1 class="center" style="color: white; margin-top: 1em;" id="headline">FCBHackdays - YouWillNeverSingAlone<br>
+<img src="logo.jpg" alt="" style="width: 30%; height: auto; margin-top: 0.5em;"></h1>
 
 <div id="debug-switch">
 <a id="checkbox-label" hidden>Debug mode</a>
@@ -437,10 +438,12 @@ if (!('webkitSpeechRecognition' in window)) {
 }
 
 document.onkeypress = function(e){
-  if((e || window.event).keyCode === 32){
+  if((e || window.event).keyCode === 111){
+    $('#center_audio_2')[0].hidden=true;
     $("#audio-1")[0].play();
   }
-  else if((e || window.event).keyCode === 13){
+  else if((e || window.event).keyCode === 109){
+    $('#center_audio_1')[0].hidden=true;
     $("#audio-2")[0].play();
   }
 }
