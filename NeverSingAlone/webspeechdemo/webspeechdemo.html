@@ -63,7 +63,7 @@
   #info {
     font-size: 20px;
     text-align: center;
-    color: white;
+    color: #777;
     visibility: hidden;
   }
   #results {
@@ -117,8 +117,7 @@ body {
 
 
 
-<h1 class="center" style="color: white; margin-top: 1em;" id="headline">FCBHackdays - YouWillNeverSingAlone<br>
-<img src="logo.jpg" alt="" style="width: 30%; height: auto; margin-top: 0.5em;"></h1>
+<h1 class="center" style="color: white" id="headline">FCBHackdays - YouWillNeverSingAlone</h1>
 
 <div id="debug-switch">
 <a id="checkbox-label" hidden>Debug mode</a>
@@ -179,7 +178,7 @@ body {
   	Ay, que bonito
 
 	[00:03.00] Sowas hat man lange nicht gesehen,
-	You haven't seen this in a long time,
+	You haven't seen something like this in a long time,
   	No has visto algo así por mucho tiempo,
 
 	[00:06.00] So schön, SO SCHÖN!
@@ -195,7 +194,7 @@ body {
   	Ay, que bonito
 
 	[00:16.00] Sowas hat man lange nicht gesehen,
-	You haven't seen this in a long time,
+	You haven't seen something like this in a long time,
   	No has visto algo así por mucho tiempo,
 
 	[00:19.50] So schön, SO SCHÖN!
@@ -394,7 +393,7 @@ if (!('webkitSpeechRecognition' in window)) {
       msg = interim_transcript;
     }
 
-    if (msg.toUpperCase().includes('WIE IST DAS SCHÖN')) {
+    if (msg.toUpperCase().includes('IST DAS SCHÖN')) {
         if (recognizing) {
           recognizing = false;
           recognition.stop();
@@ -413,7 +412,7 @@ if (!('webkitSpeechRecognition' in window)) {
 	$('#center_audio_2')[0].hidden=true;
 	$("#audio-1")[0].play();
     }
-    else if (msg.toUpperCase().includes('WIR HOLEN DIE MEISTERSCHAFT')) {
+    else if (msg.toUpperCase().includes('MEISTERSCHAFT')) {
         if (recognizing) {
           recognizing = false;
           recognition.stop();
@@ -438,12 +437,10 @@ if (!('webkitSpeechRecognition' in window)) {
 }
 
 document.onkeypress = function(e){
-  if((e || window.event).keyCode === 111){
-    $('#center_audio_2')[0].hidden=true;
+  if((e || window.event).keyCode === 32){
     $("#audio-1")[0].play();
   }
-  else if((e || window.event).keyCode === 109){
-    $('#center_audio_1')[0].hidden=true;
+  else if((e || window.event).keyCode === 13){
     $("#audio-2")[0].play();
   }
 }
