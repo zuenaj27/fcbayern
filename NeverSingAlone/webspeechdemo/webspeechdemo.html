@@ -83,7 +83,7 @@
   .line.active {
      font-size: 3em;
      font-weight: bold;
-     color: red!important;
+     color: black!important;
 }
 
 .rabbit-lyrics.rabbit-lyrics-mini {
@@ -99,11 +99,9 @@
 }
 
 body {
-
+	background-image: url(backgroundblack.png);
 	background-repeat: no-repeat;
-	width: 100%;
-	height: 100%;
-	background-size: contain;
+	background-size: cover;
 }
 
 </style>
@@ -119,10 +117,10 @@ body {
 
 
 
-<h1 class="center" style="color: red" id="headline">FCBHackdays - YouWillNeverSingAlone</h1>
+<h1 class="center" style="color: white" id="headline">FCBHackdays - YouWillNeverSingAlone</h1>
 
 <div id="debug-switch">
-<a id="checkbox-label">Debug mode</a>
+<a id="checkbox-label" hidden>Debug mode</a>
 <input id="checkbox" type="checkbox" onclick="switch_debug_mode()">
 </div>
 
@@ -167,7 +165,7 @@ body {
 
 
 <!-- Lyric display -->
-<div class="center">
+<div class="center" id="center_audio_1">
 	<audio id="audio-1" controls>
 	<source src="Oh_wie_ist_das_schoen_crop.mp3" type="audio/mpeg">
 	</audio>
@@ -207,7 +205,7 @@ body {
 
 	</div>
 </div>
-<div class="center">
+<div class="center" id="center_audio_2">
 	<audio id="audio-2" controls>
 	<source src="wir_holen_die_meisterschaft_crop.mp3" type="audio/mpeg">
 	</audio>
@@ -411,7 +409,8 @@ if (!('webkitSpeechRecognition' in window)) {
           range.selectNode(document.getElementById('final_span'));
           window.getSelection().addRange(range);
         }
-	      $("#audio-1")[0].play();
+	$('#center_audio_2')[0].hidden=true;
+	$("#audio-1")[0].play();
     }
     else if (msg.toUpperCase().includes('WIR HOLEN DIE MEISTERSCHAFT')) {
         if (recognizing) {
@@ -429,6 +428,7 @@ if (!('webkitSpeechRecognition' in window)) {
           range.selectNode(document.getElementById('final_span'));
           window.getSelection().addRange(range);
         }
+	$('#center_audio_1')[0].hidden=true;
          $("#audio-2")[0].play();
       }
 
@@ -509,7 +509,7 @@ function switch_debug_mode()
 
 switch_debug_mode();
 
-var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red', cursorColor: 'white', hideScrollbar: true});
+var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'white', cursorColor: 'transparent', hideScrollbar: true, barHeight: 2});
 
 var microphone = Object.create(WaveSurfer.Microphone);
 
